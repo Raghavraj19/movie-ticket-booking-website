@@ -1,0 +1,2 @@
+module BookngsHelper
+end

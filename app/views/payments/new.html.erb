@@ -1,0 +1,31 @@
+<h1>Bookngs Details</h1>
+<h3> <b> Bookng status :  </b> <%= @bookng.status %> </h3>
+<h4> <b> movie name </b> <%= @bookng.show.movie.name %> </h4>
+<p> <b> Show date </b> <%= @bookng.show.date %> </p>
+<p> <b> Seat No. you have choosed are :- </b> <%= @bookng.seat_ids %> </p>
+<p> <b> Show time </b> <%= @bookng.show.start_time %> </p>
+<p> <b> Number of Seats you want to book </b> <%= @bookng.number_of_seats%> </p>
+<h6> Total ammount <%= (@bookng.number_of_seats) * 150 %> </h6>
+
+<%= form_tag payments_path(bookng_id: @bookng.id) do %>
+  <label class="amount">
+      <span>Amount: $<%= (@bookng.number_of_seats) * 150 %></span>
+      <input type=”hidden” name=”stripeToken” />
+
+  </label>
+
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Book Ticket"
+    data-amount="(<%= (@bookng.number_of_seats) * 150 %>)*100"
+    data-locale="auto">
+  </script>
+<% end %>
+
+<script src=”https://js.stripe.com/v2/”></script> 
+<script>
+
+  Stripe.setPublishableKey("pk_test_51NreVhSEjAF4aUMyfvuULqhvomE9EHq5q9gZNXKnO1HnLQzjTTHyZEksFOnlFRKgTiBXNMDZ5BjcO6xVaeGGVuyP00jfVmafIk");
+
+</script>

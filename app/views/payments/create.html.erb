@@ -1,0 +1,22 @@
+<div class="card mx-auto text-center " style="width: 50%;">
+  <div class="card-header text-white bg-success">
+    <h2>Great! Your payment of <%= (@bookng.number_of_seats) * 150 %> was successful!</h2>
+  </div>
+  <div class="card-footer text-muted text-white bg-info">
+    <h6> Total ammount you paid : <%= (@bookng.number_of_seats) * 150 %> </h6>
+  </div>
+</div>
+
+
+<%= form_with model: @ticket, url: tickets_path(bookng_id: @bookng.id), method: :post, local: true do |f| %>
+
+  <div class="bookng-info">
+    <%= f.hidden_field :screen_id, :value => @bookng.show.screen.id %>
+    <%= f.hidden_field :show_id, :value => @bookng.show.id %>
+    <%= f.hidden_field :bookng_id, :value => @bookng.id %>
+    <%= f.hidden_field :total_price, :value => (@bookng.number_of_seats) * 150 %>
+ </div>
+  <%= f.submit 'To see your Ticket Click here ', class: "btn btn-default btn-primary" %>
+
+
+<% end %>

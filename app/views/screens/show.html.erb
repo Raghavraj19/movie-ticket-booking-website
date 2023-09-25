@@ -1,0 +1,14 @@
+<h1>Screen Details</h1>
+<h3> <%= @screen.name %> </h3>
+<h4> <b> Cinema Name :- </b> <%= @screen.cinema.name %> </h4>
+<p> <b> Seat Price :- </b> 150 RS </p>
+<div class="screen-container"> 
+  <h4> Screen is here </h4>
+</div>
+
+  <div class="container">
+    <% @screen.seats.each do |seat|%>
+      <div class="item">  <p style="display:inline-block;" > <b>Type : </b> <%=seat.seat_type%> <b> Row : </b> <%=seat.seat_row%> <b> Seat No: </b> <%=seat.seat_no%> </p> </div>
+    <% end %> 
+  </div>
+  <%= link_to "Book Seat", new_bookng_path(screen_id: @screen.id, movie_id: @movie.id, show_id: @show.id) %>

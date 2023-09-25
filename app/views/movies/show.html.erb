@@ -1,0 +1,37 @@
+<h1>All the Show available for <%= @movie.name %> moive  </h1>
+
+<div class="card" >
+  <div class="card-body">
+    <h5 class="card-title"><b> Movie Name : </b> <%= @movie.name %> </h5>
+    <p class="card-text"> <b> Movie desc : </b> <%= @movie.desc %>  </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> <b> release date : </b> <%= @movie.release_date %> </li>
+    <li class="list-group-item"> <b> Duration : </b> <%= @movie.duration %> </li>
+    <li class="list-group-item"> <b> Genere : </b> <%= @movie.genere %> </li>
+    <li class="list-group-item"> <b> Language : </b> <%= @movie.language %> </li>
+
+    </ul>
+</div>
+
+<h3 class="p-3 mb-2 bg-primary text-white text-center"> Show list of <%= @movie.name %> are below </h3> 
+
+  <% @movie.shows.each do |show| %>
+    <div class="col- mb-4">
+      <div class="card text-center ">
+        <div class="card-header"> 
+          <h3 class="p-3 mb-2 bg-secondary text-white "> Cinema Name :  <%=show.screen.cinema.name%> </h3>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> Date : <%=show.date%> </h5>
+          <p class="card-text"> <b> Movie name : </b> <%=show.movie.name%>  </p>
+          <p class="card-text"> <b> Show start at  : </b> <%=show.start_time%> </p>
+          <p class="card-text"> <b> Show end at : </b> <%=show.end_time%> </p>
+          <p> Book Your Ticket here -> <%= link_to "#{show.screen.name.capitalize}", screen_path(id: show.screen.id, movie_id: @movie.id, show_id: show.id) %> </p>
+        </div>
+        <div class="card-footer text-muted">
+          <h3 class=" text-warning"> Hurry up only few seats are left </h3> 
+        </div>
+      </div>
+    </div>
+<% end %> 

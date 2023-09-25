@@ -1,0 +1,11 @@
+<%= form_with model: @ticket, url: tickets_path(bookng_id: @bookng.id, ticket_id: @ticket.id), method: :post, local: true do |f| %>
+
+  <div class="bookng-info">
+    <%= f.hidden_field :screen_id, :value => @bookng.show.screen.id %>
+    <%= f.hidden_field :show_id, :value => @bookng.show.id %>
+    <%= f.hidden_field :bookng_id, :value => @bookng.id %>
+    <%= f.hidden_field :total_price, :value => (@bookng.number_of_seats) * 150 %>
+ </div>
+  <%= f.button :submit => "click here to see your ticket", class: "btn btn-primary" %>
+
+<% end %>

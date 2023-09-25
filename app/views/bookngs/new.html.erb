@@ -1,0 +1,21 @@
+<%= form_with model: @bookng, url: bookngs_path(screen_id: @screen.id, movie_id: @movie.id, show_id: @show.id, bookng_id: @bookng.id), method: :post, local: true do |f| %>
+  <div class="form-group">
+    <label>How many seat you want to book </label> 
+    <%= f.number_field :number_of_seats, in: 1..10, step: 1 %>
+    </br>
+  </div>
+  <% @screen.seats.each do |seat|%>
+    <div>
+      <%= f.check_box :seat_ids, { multiple: true }, seat.id, nil %>
+      <b> Seat No: </b> <%= seat.seat_no %>
+    </div>
+  <% end %>
+
+  <div class="bookng-info">
+    <%= f.hidden_field :screen_id, :value => @screen.id %>
+    <%= f.hidden_field :cinema_id, :value => @screen.cinema.id %>
+    <%= f.hidden_field :show_id, :value => @show.id %>
+    <%= f.hidden_field :status, :value => "initiated" %>
+ </div>
+  <%= f.submit %>
+<% end %>

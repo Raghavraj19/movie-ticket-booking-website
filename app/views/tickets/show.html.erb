@@ -1,0 +1,15 @@
+<div class="card mx-auto text-center " style="width: 50%;">
+  <div class="card-header text-white bg-success">
+    <h2>Your Ticket is here </h2>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <b> movie name </b> <%= @bookng.show.movie.name %> </h5>
+    <p class="card-text"> <b> Show date </b> <%= @bookng.show.date %> </p>
+    <p class="card-text"> <b> Show time </b> <%= @bookng.show.start_time %> </p>
+    <p class="card-text"> <b> Seat No. you have choosed are :- </b> <%= @bookng.seat_ids %> </p>
+    <p class="card-text"> <b> Number of Seats you have booked are </b> <%= @bookng.number_of_seats%> </p>
+  </div>
+  <div class="card-footer text-muted text-white bg-info">
+    <h6> Total ammount you paid : <%= (@bookng.number_of_seats) * 150 %> </h6>
+  </div>
+</div>

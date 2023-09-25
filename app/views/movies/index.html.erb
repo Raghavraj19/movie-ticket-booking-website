@@ -1,0 +1,14 @@
+<h1>Movies Lists</h1>
+<ul>
+<% @movies.each do |movie| %>
+  <li>
+    <h2> <b> Movie Name : </b> <%= link_to "#{movie.name.capitalize}", movie_path(movie.id) %> </h2> 
+    <p> <b> Movie desc : </b> <%=movie.desc%> </p>
+    <p> <b> release date : </b> <%=movie.release_date%> </p>
+    <p> <b> Duration : </b> <%=movie.duration%> </p>
+    <p> <b> Genere : </b> <%=movie.genere%> </p>
+    <p> <b> Language : </b> <%=movie.language%> </p>
+  </li>
+
+  <% end %>
+</ul>
